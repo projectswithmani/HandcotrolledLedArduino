@@ -1,0 +1,27 @@
+// Define the pin connected to the LED
+const int ledPin = 13;  // You can change this to the pin where your LED is connected
+
+void setup() {
+  // Initialize the serial communication
+  Serial.begin(9600);
+
+  // Initialize the LED pin as an output
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop() {
+  // Check if data is available from the serial monitor
+  if (Serial.available() > 0) {
+    // Read the incoming data (either '1' or '0')
+    char command = Serial.read();
+
+    // If the command is '1', turn the LED on
+    if (command == '1') {
+      digitalWrite(ledPin, HIGH);
+    }
+    // If the command is '0', turn the LED off
+    else if (command == '0') {
+      digitalWrite(ledPin, LOW);
+    }
+  }
+}
